@@ -424,12 +424,16 @@ h6 {
     font-size: 18px;
     line-height: 24px;
   }
+
+  .hero-img { height:500px; }
 }
 
 @media (max-height: 500px) {
   #hero {
     height: 120vh;
   }
+
+  .hero-img { height:300px; }
 }
 
 /*--------------------------------------------------------------
