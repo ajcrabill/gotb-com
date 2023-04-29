@@ -400,13 +400,14 @@ h6 {
   transition: 0.5s;
   margin-top: 30px;
   color: #fff;
-  background: #2596be;
-  border: 2px solid #2596be;
+  background: #c33;
+  border: 2px solid #900;
 }
 
 #hero .btn-get-started:hover {
   background: transparent;
-  border-color: #fff;
+  border-color: #666;
+  color: #666;
 }
 
 @media (max-width: 768px) {
