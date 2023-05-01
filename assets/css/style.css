@@ -410,7 +410,6 @@ h6 {
   color: #666;
 }
 
-.hero-img { padding-top:30px; height:400px; }
 
 @media (max-width: 800px) {
   #hero {
@@ -427,11 +426,9 @@ h6 {
     line-height: 24px;
   }
 
-  .hero-img { padding-top:30px; height:200px; }
 }
 
 @media (max-width: 400px) {
-  .hero-img { display:none;}
 
 }
 
@@ -440,8 +437,35 @@ h6 {
     height: 120vh;
   }
 
-  .hero-img { padding-top:30px; height:150px; }
 }
+
+
+
+.hero-img { height:500px; }
+
+/* PHONE OR TABLET IN PORTRAIT */
+@media screen and (orientation: portrait) and (min-width: 0px) and (max-width:1000px) { 
+  .hero-img { padding-top:30px; height:200px; }
+}
+
+/* PHONE OR TABLET IN LANDSCAPE */
+@media screen and (orientation: landscape) and (min-width: 0px) and (max-width:1000px) {  
+  .hero-img { display:none; }
+}
+
+/* DESKTOP OR LAPTOP */
+@media screen and (min-width: 1001px) and (max-width:1600px) {      
+  .hero-img { height:400px; }
+}
+
+/* WIDESCREEN DESKTOP OR LAPTOP */
+@media (min-width: 1600px){      
+  .hero-img { height:500px; }
+}
+
+
+
+
 
 /*--------------------------------------------------------------
 # Sections General
