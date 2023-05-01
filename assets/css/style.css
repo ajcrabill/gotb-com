@@ -410,9 +410,9 @@ h6 {
   color: #666;
 }
 
-.hero-img { height:400px; }
+.hero-img { padding-top:30px; height:400px; }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   #hero {
     text-align: center;
     padding-top: 58px;
@@ -427,7 +427,7 @@ h6 {
     line-height: 24px;
   }
 
-  .hero-img { padding-top:20px; height:200px; }
+  .hero-img { padding-top:30px; height:200px; }
 }
 
 @media (max-height: 500px) {
@@ -435,7 +435,7 @@ h6 {
     height: 120vh;
   }
 
-  .hero-img { padding-top:20px; height:150px; }
+  .hero-img { padding-top:30px; height:150px; }
 }
 
 /*--------------------------------------------------------------
