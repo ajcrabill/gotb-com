@@ -826,6 +826,7 @@
   'use strict';
 
   var API = 'https://esbcloud.taild49f53.ts.net:8443/gotb/submit';
+  var QUESTIONS_API = 'https://esbcloud.taild49f53.ts.net:8443/gotb/questions';
 
   var AREAS = [
     { id: 'focus',       label: 'Focus Mindset',       desc: 'Keeping the board\'s attention on student outcomes',  max: 10 },
@@ -835,33 +836,30 @@
     { id: 'communicate', label: 'Communicate Results', desc: 'Honest, plain-language reporting to the community',   max: 5  },
   ];
 
-  var QUESTIONS = [
-    // Focus Mindset (area 0)
+  var FALLBACK_QUESTIONS = [
     { area: 0, text: 'Our board spends the majority of its meeting time on student outcomes, not operational updates.' },
     { area: 0, text: 'When we debate a decision, we keep coming back to how it affects what students are actually learning.' },
     { area: 0, text: 'We hold ourselves — the adults — responsible for changing our own behavior, not just asking staff to change theirs.' },
     { area: 0, text: 'A visitor watching one of our meetings would walk away knowing students are this board\'s top priority.' },
-    // Clarify Priorities (area 1)
     { area: 1, text: 'Our board has a small number of clear, written goals for student outcomes.' },
     { area: 1, text: 'Each of us can name our district\'s most important student outcome goals without looking them up.' },
     { area: 1, text: 'We have set clear guardrails for what the superintendent may and may not do in pursuing those goals.' },
     { area: 1, text: 'Our goals are specific and measurable enough that we\'d know whether we hit them.' },
-    // Monitor Progress (area 2)
     { area: 2, text: 'We regularly review data on whether students are improving toward our goals.' },
     { area: 2, text: 'We know right now whether our district is on track to meet its student outcome goals.' },
     { area: 2, text: 'We spend protected time at meetings monitoring progress, not just hearing reports.' },
     { area: 2, text: 'When the data shows progress has stalled, we ask what we as a board need to change.' },
-    // Align Resources (area 3)
     { area: 3, text: 'Our budget visibly reflects our top student outcome goals.' },
     { area: 3, text: 'When we approve a major expenditure, we can point to the goal it advances.' },
     { area: 3, text: 'We are willing to stop funding things that don\'t move our goals, not just add new things.' },
     { area: 3, text: 'Our calendar and policy decisions are made with our student outcome goals in mind.' },
-    // Communicate Results (area 4)
     { area: 4, text: 'We communicate our goals and our progress to the community in plain, jargon-free language.' },
     { area: 4, text: 'We share results honestly with the community, including where we are falling short.' },
     { area: 4, text: 'The community has clear, regular ways to hear how the district is doing on its goals.' },
     { area: 4, text: 'We make decisions based on what the whole community needs, not only the loudest voices in the room.' },
   ];
+
+  var QUESTIONS = [];
 
   var SCALE = [
     { name: 'Ineffective',      desc: 'We don\'t do this',             cls: 'c0' },
@@ -1110,17 +1108,40 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Start at question 1 immediately — no intro screen
+  function startAssessment() {
+    answers = new Array(QUESTIONS.length).fill(-1);
+    areaIdx = 0;
+    qIdxInArea = 0;
     showStep('step-questions');
     renderQuestion();
+  }
 
+  document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('next-btn').addEventListener('click', goNext);
     document.getElementById('prev-btn').addEventListener('click', goPrev);
     document.getElementById('submit-btn').addEventListener('click', submitGate);
     document.getElementById('gate-email').addEventListener('keydown', function(e){
       if (e.key === 'Enter') submitGate();
     });
+
+    // Fetch questions from API; fall back to bundled list if unreachable
+    var qArea = document.getElementById('question-area');
+    qArea.innerHTML = '<div style="padding:2rem;text-align:center;color:#777;font-size:14px;">Loading questions…</div>';
+    showStep('step-questions');
+
+    fetch(QUESTIONS_API)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var qs = (data && data.free && data.free.length) ? data.free : FALLBACK_QUESTIONS;
+        QUESTIONS = qs.map(function(q) { return { area: q.area, text: q.text }; });
+        answers = new Array(QUESTIONS.length).fill(-1);
+        renderQuestion();
+      })
+      .catch(function() {
+        QUESTIONS = FALLBACK_QUESTIONS;
+        answers = new Array(QUESTIONS.length).fill(-1);
+        renderQuestion();
+      });
   });
 
 })();
