@@ -569,6 +569,96 @@
     .gotb-embed .results-cta p { margin: 0 0 18px; color: #adc9e8; font-size: 13px; line-height: 1.6; }
     .gotb-embed .btn-cta { display: inline-block; background: #e8a000; color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; }
     .gotb-embed .disclaimer { font-size: 11px; color: #aaa; line-height: 1.6; margin-top: 18px; text-align: center; }
+
+    /* ── TESTIMONIALS CAROUSEL ── */
+    .testimonials-section {
+      background: var(--navy);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .testimonials-section .section-eyebrow {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7FAFD4;
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonials-section h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-carousel {
+      max-width: 720px;
+      margin: 0 auto;
+      min-height: 160px;
+      position: relative;
+    }
+
+    .testimonial-slide {
+      display: none;
+    }
+
+    .testimonial-slide.active {
+      display: block;
+      animation: tFadeIn 0.45s ease;
+    }
+
+    @keyframes tFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .testimonial-quote {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+
+    .testimonial-attribution {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7FAFD4;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #5A8AAD;
+      margin-top: 0.2rem;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+
+    .carousel-dot.active { background: var(--white); }
   </style>
 </head>
 <body>
@@ -808,6 +898,78 @@
     </div>
   </div>
 </div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <span class="section-eyebrow">What Practitioners Are Saying</span>
+  <h2>The framework in action</h2>
+
+  <div class="testimonials-carousel" id="tCarousel">
+
+    <div class="testimonial-slide active">
+      <p class="testimonial-quote">Great on Their Behalf is a valuable resource for school boards who are serious about changing outcomes for kids.</p>
+      <div class="testimonial-attribution">Rico Munn</div>
+      <div class="testimonial-role">Superintendent, Aurora (Colorado) Public Schools</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">Great on Their Behalf shifts you from a place of worry and despair to a place of hope, empowerment, and action.</p>
+      <div class="testimonial-attribution">Aretta L. Baldon</div>
+      <div class="testimonial-role">Vice Chair, Atlanta (Georgia) Public Schools Board</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">This is a must-read for any school board member. Governance focused on student outcomes will be a game-changer.</p>
+      <div class="testimonial-attribution">Judith Cruz</div>
+      <div class="testimonial-role">Chair, Houston (Texas) ISD Board of Trustees</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">If you believe that your students deserve for you to be great on their behalf, this is a must-read!</p>
+      <div class="testimonial-attribution">Dr. Jill A. Baker</div>
+      <div class="testimonial-role">Superintendent, Long Beach (California) Unified School District</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">Our pivot to student-outcomes-focused governance has been transformative. If we don't change, nothing will change for our children.</p>
+      <div class="testimonial-attribution">Joyce Wilkerson</div>
+      <div class="testimonial-role">Chair, Philadelphia (Pennsylvania) School District Board</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">This book is a stepping stone for board members to lead in a way that puts student success before adult needs.</p>
+      <div class="testimonial-attribution">Devon L. Taliaferro</div>
+      <div class="testimonial-role">Vice-President, Pittsburgh (Pennsylvania) Public Schools Board</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">Anyone with a real heart to serve students well on a local school board will find this book compelling and propelling.</p>
+      <div class="testimonial-attribution">Donna Bahorich</div>
+      <div class="testimonial-role">Former Board Chair, Texas State Board of Education</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">Effective School Boards provides superintendents and their boards a practical approach to keeping students at the center of their work.</p>
+      <div class="testimonial-attribution">Heather Contreras</div>
+      <div class="testimonial-role">Superintendent, Pajaro Valley USD (California)</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">Both sobering and enlightening, it offers practical exercises to structure your board's actions and meetings.</p>
+      <div class="testimonial-attribution">Jeri Robinson</div>
+      <div class="testimonial-role">School Committee Chair, Boston (Massachusetts) Public Schools</div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-quote">This book provides a pathway for my own transformation so that my school board can be effective and our students successful.</p>
+      <div class="testimonial-attribution">Rodney Jordan</div>
+      <div class="testimonial-role">Board Member, Norfolk (Virginia) Public Schools</div>
+    </div>
+
+  </div>
+
+  <div class="carousel-dots" id="tDots"></div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -1145,6 +1307,37 @@
   });
 
 })();
+</script>
+<script>
+(function () {
+  var slides = document.querySelectorAll('#tCarousel .testimonial-slide');
+  var dotsContainer = document.getElementById('tDots');
+  var current = 0;
+  var timer;
+
+  slides.forEach(function (_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+    dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () { goTo(current + 1); }, 5000);
+  }
+
+  resetTimer();
+}());
 </script>
 </body>
 </html>
